@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\Blog\ArticlesController;
 use App\Http\Controllers\UsersController;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -29,3 +30,9 @@ Route::get('/posts', [PostsController::class, 'index']);
 Route::get('/posts/{id}', [PostsController::class, 'show']);
 // Route with a POST request
 Route::post('/posts', [PostsController::class, 'store']);
+
+Route::get('/articles', [ArticlesController::class, 'index']);
+// Route with dynamic parameter
+Route::get('/article/{id}', [ArticlesController::class, 'show']);
+// Route with a POST request
+Route::post('/posts', [ArticlesController::class, 'store']);
