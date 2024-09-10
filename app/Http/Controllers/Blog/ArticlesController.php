@@ -8,10 +8,11 @@ use App\Http\Requests\ArticleRequest;
 
 class ArticlesController extends Controller
 {
+    private $relations = ['author', 'photo'];
     // Display a listing of the posts (GET /api/posts)
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::with($this->relations)->get();
         return response()->json($articles);
     }
 
@@ -22,14 +23,14 @@ class ArticlesController extends Controller
 
         return response()->json([
             'message' => 'Post created successfully.',
-            'post' => $article
+            'post' => $article->load($this->relations)
         ], 201);
     }
 
     // Display the specified post (GET /api/posts/{id})
-    public function show(Article $article)
+    public function show($articleId)
     {
-        return response()->json($article);
+        return response()->json(Article::find($articleId)->load($this->relations));
     }
 
     // Update the specified post in storage (PUT/PATCH /api/posts/{id})
@@ -38,7 +39,7 @@ class ArticlesController extends Controller
         $article->update($request->all());
         return response()->json([
             'message' => 'Article updated successfully.',
-            'post' => $article
+            'post' => $article->load($this->relations)
         ]);
     }
 

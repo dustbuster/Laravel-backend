@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Models\Library;
+namespace App\Models;
 
 use App\Models\Blog\Article;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Author extends Model
+class Photo extends Model
 {
     use HasFactory;
-    public $fillable = ['name', 'bio', 'email'];
+    public $fillable = ['local_image_path', 's3_image_path'];
 
     public function articles()
     {
