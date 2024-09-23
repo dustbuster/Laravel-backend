@@ -20,3 +20,4 @@ yarn-error.log
 /.vscode
 /frontend
 frontend/*
+.DS_Store
