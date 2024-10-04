@@ -11,12 +11,16 @@ class Series extends Model
     use HasFactory;
     public $fillable = [
         'title',
-        'genre',
         'series_id'
     ];
 
     public function books()
     {
         return $this->belongsToMany(Book::class, 'book_series');
+    }
+
+    public function genres()
+    {
+        return $this->belongsToMany(Genre::class, 'series_genres');
     }
 }
