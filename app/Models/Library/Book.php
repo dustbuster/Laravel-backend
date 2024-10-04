@@ -14,7 +14,6 @@ class Book extends Model
         'cover_image_photo_id',
         'qr_code_hash',
         'author_id',
-        'book_series_id',
         'ibsn'
     ];
     public function author()
@@ -25,5 +24,9 @@ class Book extends Model
     public function series()
     {
         return $this->belongsToMany(Series::class, 'book_series');
+    }
+    public function genres()
+    {
+        return $this->belongsToMany(Genre::class, 'book_series');
     }
 }

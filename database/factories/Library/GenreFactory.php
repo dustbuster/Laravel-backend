@@ -5,9 +5,9 @@ namespace Database\Factories\Library;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Library\Series>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Library\Genre>
  */
-class SeriesFactory extends Factory
+class GenreFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +17,7 @@ class SeriesFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->title(),
-            'genre' => fake()->enum(['Sci-fi', 'Fantasy', 'Mystery', 'Thriller', 'Romance']),
+            'name' => fake()->enum(['Sci-fi', 'Fantasy', 'Mystery', 'Thriller', 'Romance'])
         ];
     }
 }

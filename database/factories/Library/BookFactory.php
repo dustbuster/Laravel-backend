@@ -24,8 +24,7 @@ class BookFactory extends Factory
             'cover_image_photo_id' => Photo::factory()->create()->id,
             'qr_code_hash' => fake()->md5(),
             'author_id' => Author::factory()->create()->id,
-            'book_series_id',
-            'ibsn'
+            'ibsn' => fake()->isbn13()
         ];
     }
 }

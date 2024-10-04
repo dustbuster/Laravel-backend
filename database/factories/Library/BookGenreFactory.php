@@ -3,13 +3,13 @@
 namespace Database\Factories\Library;
 
 use App\Models\Library\Book;
-use App\Models\Library\Series;
+use App\Models\Library\Genre;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Library\BookSeries>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BookGenre>
  */
-class BookSeriesFactory extends Factory
+class BookGenreFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,10 +19,8 @@ class BookSeriesFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->title(),
-            'genre' => null,
             'book_id' => Book::factory()->create()->id,
-            'series_id' => Series::factory()->create()->id
+            'genre_id' => Genre::factory()->create()->id
         ];
     }
 }
