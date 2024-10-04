@@ -9,7 +9,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Author extends Model
 {
     use HasFactory;
-    public $fillable = ['name', 'bio', 'email'];
+    public $fillable = [
+        'name',
+        'bio',
+        'email'
+    ];
 
     public function articles()
     {

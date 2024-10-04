@@ -69,6 +69,7 @@ Here's the **corrected Table of Contents** for your document:
 -   [Jobs](#jobs)
 -   [Event Listeners](#event-listeners)
 -   [Gate and Block](#gate-vs-block-in-laravel) (interview question i ran into)
+-   [Cross-Site Request Forgery (CSRF)](#cross-site-request-forgery)
 
 This table of contents should now have working anchor links in markdown, formatted correctly for your document!
 
@@ -1025,6 +1026,37 @@ if (Block::allows('dashboard-section', $user)) {
 #### **Link to Gate and Block Section**
 
 This cheat sheet covers common tasks in Laravel 11. You can expand on these depending on the specific areas you need more details on, such as packages or advanced features!
+
+#### **Cross-Site Request Forgery**
+
+**AKA CSRF**
+
+Cross-Site Request Forgery (CSRF) tokens are a security mechanism used to prevent unauthorized actions on behalf of an authenticated user. They work by ensuring that requests made to a server are intentional and come from legitimate sources, particularly in web applications where forms and API requests are involved.
+
+### How CSRF Tokens Work:
+
+1. **Token Generation**: When a user accesses a page with a form (or makes an API request), the server generates a unique CSRF token for that session or form.
+2. **Token Embedding**: The token is embedded in the form or request, usually as a hidden input field in forms or as a request header in AJAX requests.
+3. **Validation on Submission**: When the form is submitted or the request is made, the server checks if the CSRF token matches the one generated for that session.
+4. **Action Allowed/Denied**: If the token is valid and matches, the server processes the request. If the token is missing or incorrect, the server rejects the request, preventing potential CSRF attacks.
+
+### What Do CSRF Tokens Protect Against?
+
+CSRF attacks happen when a malicious actor tricks a user into performing an unwanted action on a web application where they are authenticated. For example, an attacker might trick a user into clicking a hidden link that performs actions like transferring funds or changing account details without the user's consent.
+
+The CSRF token ensures that only requests coming from a legitimate source (i.e., the user’s browser where the token was issued) are processed, thereby blocking any unauthorized or malicious actions triggered from external sites.
+
+### Laravel and CSRF Tokens:
+
+In Laravel, CSRF protection is enabled by default for web routes. Laravel automatically generates CSRF tokens for every session, and these tokens are verified on form submissions and requests. You can embed the token in your form using:
+
+```php
+@csrf
+```
+
+In API requests, Laravel checks the `X-CSRF-TOKEN` header, which can be sent with the request.
+
+Would you like more details or an example?
 
 ```
 
